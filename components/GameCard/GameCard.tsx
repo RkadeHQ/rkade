@@ -45,10 +45,20 @@ const GameCard = ({ game }: IGameCardProps) => {
         </div>
       </div>
       <div className="flex text-center justify-center items-center text-white font-semibold">
-        <button className="mx-2 bg-gradient-to-r from-primaryLight to-primaryDark py-2 px-12 rounded">
+        <button
+          onClick={() =>
+            (window.location.href = `/compete/1v1/${MatchNumber}/create`)
+          }
+          className="mx-2 bg-gradient-to-r from-primaryLight to-primaryDark py-2 px-12 rounded"
+        >
           Create 1v1 Game
         </button>
-        <button className="mx-2 bg-gradient-to-r from-primaryLight to-primaryDark py-2 px-12 rounded">
+        <button
+          onClick={() =>
+            (window.location.href = `/compete/league/${MatchNumber}`)
+          }
+          className="mx-2 bg-gradient-to-r from-primaryLight to-primaryDark py-2 px-12 rounded"
+        >
           Join League
         </button>
       </div>

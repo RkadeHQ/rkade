@@ -101,3 +101,10 @@ export async function createTeamForLeague(
 
   return (await res).data;
 }
+
+export async function getCreatedTeam(address: string, gameCode: string) {
+  const res = await router.get(
+    `/premier-league/leagues/${gameCode}/${address}.json`
+  );
+  return res.data;
+}
