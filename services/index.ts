@@ -1,5 +1,6 @@
 import { IFixture } from '../interfaces/fixture.interface';
 import { IGame } from '../interfaces/game.interface';
+import { IPlayer } from '../interfaces/player.interface';
 import router from '../utils/router';
 
 export async function getFixtures(): Promise<IFixture[]> {
@@ -76,4 +77,27 @@ export async function getFixtureByGameNumber(
   const fixtures: IFixture[] = res.data;
 
   return fixtures.find((game) => game.MatchNumber === gameNumber) as IFixture;
+}
+
+export async function getPlayersByTeams(homeTeam: string, awayTeam: string) {
+  const res = await router.get(`/premier-league/players.json`);
+  const players: IPlayer[] = res.data;
+
+  return players.filter(
+    (player) => player.team === homeTeam || player.team === awayTeam
+  );
+}
+
+export async function createTeamForLeague(
+  gameCode: string,
+  address: string,
+  players: string[]
+) {
+  const body = {
+    [`${address}`]: players
+  };
+
+  const res = router.put(`/premier-league/leagues/${gameCode}.json`, body);
+
+  return (await res).data;
 }
