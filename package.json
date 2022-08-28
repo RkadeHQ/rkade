@@ -9,11 +9,16 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@walletconnect/web3-provider": "^1.8.0",
     "axios": "^0.27.2",
+    "ethers": "^5.7.0",
+    "jsonwebtoken": "^8.5.1",
     "next": "12.2.5",
     "nft.storage": "^7.0.0",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "uuid": "^8.3.2",
+    "web3modal": "^1.9.9"
   },
   "devDependencies": {
     "@types/node": "18.7.13",

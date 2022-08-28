@@ -6,7 +6,7 @@ import WalletConnectProvider from '@walletconnect/web3-provider';
 export default function useAuth() {
   const getWeb3Modal = useCallback(async () => {
     const web3Modal = new Web3Modal({
-      // network: 'testnet',
+      network: 'testnet',
       cacheProvider: true,
       providerOptions: {
         walletconnect: {
@@ -23,6 +23,8 @@ export default function useAuth() {
   }, []);
 
   const connect = useCallback(async () => {
+    console.log('ok');
+
     const web3Modal = await getWeb3Modal();
     const connection = await web3Modal.connect();
     const provider = new ethers.providers.Web3Provider(connection);
@@ -44,6 +46,7 @@ export default function useAuth() {
       `/api/verify?address=${account}&signature=${signature}&id=${user.id}`
     );
     const data = await response.json();
+    localStorage.setItem('token', data.token);
   }, []);
 
   return {
